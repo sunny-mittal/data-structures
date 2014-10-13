@@ -12,4 +12,5 @@ describe 'Insertion sort method' do
     [1,5,4,2,6,7].insertion_sort.must_equal [1,2,4,5,6,7]
     [3,8,9,14,2].insertion_sort.must_equal [2,3,8,9,14]
   end
+
 end
