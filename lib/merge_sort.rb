@@ -13,6 +13,7 @@ class Array
   private
 
   def merge(left, right)
+    return left unless right
     sorted = []
     until left.empty? || right.empty?
       left[0] < right[0] ? sorted << left.shift : sorted << right.shift
