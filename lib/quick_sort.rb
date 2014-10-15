@@ -5,7 +5,7 @@ class Array
   def quick_sort
     return self if length < 2
 
-    p_index = length / 2
+    p_index = rand(length)
     c_index = 0
 
     until c_index == length
