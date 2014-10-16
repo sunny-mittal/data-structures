@@ -18,10 +18,10 @@ describe 'Merge sort method' do
 
   it 'should prove its awesomeness' do
     puts 'Best'
-    puts Benchmark.measure { (1..100000).to_a.merge_sort }
+    puts Benchmark.measure { (1..100_000).to_a.merge_sort }
     puts 'Worst'
-    puts Benchmark.measure { 100000.downto(1).to_a.merge_sort }
+    puts Benchmark.measure { 100_000.downto(1).to_a.merge_sort }
     puts 'Random'
-    puts Benchmark.measure { (1..100000).to_a.shuffle.merge_sort }
+    puts Benchmark.measure { (1..100_000).to_a.shuffle.merge_sort }
   end
 end
