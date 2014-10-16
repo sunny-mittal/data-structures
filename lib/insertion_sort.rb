@@ -2,7 +2,7 @@ class Array
   def insertion_sort
     each_with_index do |current_value, index|
       next if index == 0 || current_value >= self[index - 1]
-      for i in (index - 1).downto(0) do
+      (index - 1).downto(0).each do |i|
         if current_value < self[i]
           if i == 0
             delete_at(index)
