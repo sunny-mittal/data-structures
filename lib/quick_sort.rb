@@ -16,7 +16,6 @@ class Array
   private
 
   def qs_partition(left, right, pivot_index)
-    binding.pry
     pivot_value = at(pivot_index)
     self[pivot_index], self[right] = at(right), at(pivot_index)
     store_index = left

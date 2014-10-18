@@ -16,10 +16,10 @@ describe 'Quick sort method' do
 
   it 'is benchmarked for awesomeness' do
     puts 'Best'
-    puts Benchmark.measure { (1..10_000).to_a.quick_sort }
+    puts Benchmark.measure { (1..100_000).to_a.quick_sort }
     puts 'Worst'
-    puts Benchmark.measure { 10_000.downto(1).to_a.quick_sort }
+    puts Benchmark.measure { 100_000.downto(1).to_a.quick_sort }
     puts 'Random'
-    puts Benchmark.measure { (1..10_000).to_a.shuffle.quick_sort }
+    puts Benchmark.measure { (1..100_000).to_a.shuffle.quick_sort }
   end
 end
