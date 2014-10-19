@@ -16,10 +16,10 @@ describe 'Radix sort method' do
 
   it 'is benchmarked for awesomeness' do
     puts 'Best'
-    puts Benchmark.measure { (1..10_000_000).to_a.radix_sort }
+    puts Benchmark.measure { (1..1_000_000).to_a.radix_sort }
     puts 'Worst'
-    puts Benchmark.measure { 10_000_000.downto(1).to_a.radix_sort }
+    puts Benchmark.measure { 1_000_000.downto(1).to_a.radix_sort }
     puts 'Random'
-    puts Benchmark.measure { (1..10_000_000).to_a.shuffle.radix_sort }
+    puts Benchmark.measure { (1..1_000_000).to_a.shuffle.radix_sort }
   end
 end
