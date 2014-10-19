@@ -52,6 +52,8 @@ To sort an array using my version of merge sort, simply call `merge_sort` on you
 ## How it works
 I chose to open up the Array class for this as well and add the necessary instance method. I recursively break down the array into left and right pieces until every element is in an array by itself. I then merge the pieces together, unwinding the recursion, and returning a sorted array. Boom!
 
+# Quick Sort
+
 **Quick Sort** is my implementation of the classic sorting algorithm. It takes in a numeric input array and sorts it in ascending order.
 
 ## Installation
@@ -73,3 +75,28 @@ To sort an array using my version of insertion sort, simply call `insertion_sort
 
 ## How it works
 Again I chose to open up the Array class and add the necessary instance method(s). The method takes in two optional parameters representing the left and right pointers, respectively. If the parameters are not provided, the default of `0` and `length - 1` are used. Then, if the left index is less than the right, a pivot index is chosen that is roughly halfway between the two, otherwise the array is done being sorted and is returned. When a pivot index is chosen, the array is partitioned so that all places below the pivot index contain lower values. A new pivot index is returned by the partitioning method representing the point at which all values on the right are greater and all values on the left are smaller. The quicksort method is then called recursively on the left and right halves of the array until the array is sorted.
+
+# Radix Sort
+
+**Radix Sort** is my implementation of the classic sorting algorithm. It takes in a numeric input array and sorts it in ascending order.
+
+## Installation
+
+Require in your *.rb file (or use directly in IRB):
+
+```ruby
+require 'radix_sort.rb'
+```
+
+## Usage
+
+To sort an array using my version of insertion sort, simply call `insertion_sort` on your array:
+
+```ruby
+[1,4,2,5,6].radix_sort # => [1,2,4,5,6]
+[3,2,6,4,13].radix_sort # => [2,3,4,6,13]
+```
+
+## How it works
+
+For the last of my sorting algorithms, I again chose to open up the Array class. When the method is called, a ten-element multidimensional array is instantiated to act as my buckets. I then iterate over each element of the receiving array (`self`), converting it to a string and looking at the value in the position corresponding to which pass I'm on (ones, tens, hundreds, etc.). If the value is `nil`, it means the element can be shoved into the `completed` array, because it need not participate in subsequent recursions; if the value is not `nil`, it is placed into the appropriate bucket. Once all elements have been added to `completed` or placed in their buckets, the `buckets` array is flattened and, provided it isn't empty, `radix_sort` is called on it with a new value indicating which position we're sorting on. The recursion ends when there are no more elements in buckets and everything is in the `completed` array. When the recursion tree unwinds, the `completed` arrays from each level are added together in order, resulting in a sorted array.
