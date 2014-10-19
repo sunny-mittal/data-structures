@@ -2,7 +2,7 @@ Documentation:
   Enabled: false
 
 AllCops:
-  RunRailsCops: true
+  RunRailsCops: false
   Include:
     - Gemfile
     - lib/tasks/*
