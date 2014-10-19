@@ -54,8 +54,8 @@ class List
       return current_node.value
     else
       until current_node.nil?
-        previous_node, current_node = current_node, current_node.next_node
-        return if current_node.nil?
+        previous_node = current_node
+        return if (current_node = current_node.next_node).nil?
         if current_node.value == node.value
           previous_node.next_node = current_node.next_node
           @size -= 1
