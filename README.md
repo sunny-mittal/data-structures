@@ -134,3 +134,29 @@ list.to_s # => "'Galoot', 42"
 ### How it works
 
 The Linked List file includes two classes, one for a node and one for the list itself. A node must be given a value and, by default, has no "next node." When a list is created using the constructor, its size is set to 0 and its head is set to `nil`. Upon insertion of a node, `head` is set to the new node, which updates its `next_node` value to the previous node, if there was any. `search` is pretty straightforward: it begins searching from the head for the given value and returns the node, if found, or `nil`, if no corresponding value was found. `remove` is a bit more complicated as it needs to maintain knowledge of the previous node as well as the current node. When called, it first checks to see if the list is empty or if `remove` was called on a `nil` value, in which case it returns `nil`. If this check passes, it then checks to see if the head node is the desired node. If so it returns the node's value and points the head at the next node, decrementing `size` by 1. If this second check also passes, it proceeds to look through the remaining elements of the list until it finds the desired node or tops out, returning `nil`.
+
+## Stack
+
+**Stack** is my implementation of a first-in/last-out (FILO) stack in Ruby.
+
+### Installation
+
+Require in your *.rb file (or use directly in IRB):
+
+```ruby
+require 'stack.rb'
+```
+
+### Usage
+
+To construct an empty stack, use `Stack.new`. To push elements onto the stack, call the `push` instance method with a parameter of what you want to add. To remove the top element from the stack, call the `pop` instance method.
+
+```ruby
+stack = Stack.new
+stack.push :giraffe #=> [#<Node:0x000000032bd038 @value=:giraffe, @next_node=nil>, 1]
+stack.pop #=> :giraffe
+```
+
+### How it works
+
+The stack is a very simple class similar to the linked list (above) but with fewer methods. Like the list, `Node` instances are used to store the stack's information. When initialized, the stack's `size` attribute is set to 0. When pushing a new value, a `Node` object is created and its `next_node` value is set to the current `head` (`nil` if there is none). Then the `head` is set to point at the new node. When popping a value, an error is raised if the stack is already empty; otherwise, the value at the current head is stored, the head is set to point at the next node in the stack, and the stored value is retured.
