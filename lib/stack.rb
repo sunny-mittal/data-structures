@@ -1,14 +1,6 @@
 require 'pry'
 require 'pry-nav'
-
-class Node
-  attr_reader :value
-  attr_accessor :next_node
-
-  def initialize(value)
-    @value = value
-  end
-end
+require 'node'
 
 class Stack
   attr_reader :head, :size

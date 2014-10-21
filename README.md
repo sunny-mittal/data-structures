@@ -160,3 +160,29 @@ stack.pop #=> :giraffe
 ### How it works
 
 The stack is a very simple class similar to the linked list (above) but with fewer methods. Like the list, `Node` instances are used to store the stack's information. When initialized, the stack's `size` attribute is set to 0. When pushing a new value, a `Node` object is created and its `next_node` value is set to the current `head` (`nil` if there is none). Then the `head` is set to point at the new node. When popping a value, an error is raised if the stack is already empty; otherwise, the value at the current head is stored, the head is set to point at the next node in the stack, and the stored value is retured.
+
+## Queueue
+
+**Stack** is my implementation of a first-in/last-out (FILO) stack in Ruby.
+
+### Installation
+
+Require in your *.rb file (or use directly in IRB):
+
+```ruby
+require 'stack.rb'
+```
+
+### Usage
+
+To construct an empty stack, use `Stack.new`. To push elements onto the stack, call the `push` instance method with a parameter of what you want to add. To remove the top element from the stack, call the `pop` instance method.
+
+```ruby
+stack = Stack.new
+stack.push :giraffe #=> [#<Node:0x000000032bd038 @value=:giraffe, @next_node=nil>, 1]
+stack.pop #=> :giraffe
+```
+
+### How it works
+
+The stack is a very simple class similar to the linked list (above) but with fewer methods. Like the list, `Node` instances are used to store the stack's information. When initialized, the stack's `size` attribute is set to 0. When pushing a new value, a `Node` object is created and its `next_node` value is set to the current `head` (`nil` if there is none). Then the `head` is set to point at the new node. When popping a value, an error is raised if the stack is already empty; otherwise, the value at the current head is stored, the head is set to point at the next node in the stack, and the stored value is retured.
