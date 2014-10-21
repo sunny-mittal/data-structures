@@ -163,26 +163,29 @@ The stack is a very simple class similar to the linked list (above) but with few
 
 ## Queueue
 
-**Stack** is my implementation of a first-in/last-out (FILO) stack in Ruby.
+**Queueue** is my implementation of a first-in/first-out (FIFO) data structure in Ruby.
 
 ### Installation
 
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'stack.rb'
+require 'queueue.rb'
 ```
 
 ### Usage
 
-To construct an empty stack, use `Stack.new`. To push elements onto the stack, call the `push` instance method with a parameter of what you want to add. To remove the top element from the stack, call the `pop` instance method.
+To construct an empty queue, use `Queueue.new` (note the intentional misspelling to avoid conflicts with `Thread::Queue`). To add elements to the queue, call `enqueue(<your value>)` on your Queueue instance. To remove the first element of the queue, call `dequeue` on your Queueue instance.
 
 ```ruby
-stack = Stack.new
-stack.push :giraffe #=> [#<Node:0x000000032bd038 @value=:giraffe, @next_node=nil>, 1]
-stack.pop #=> :giraffe
+queue = Queueue.new
+queue.size #=> 0
+queue.enqueue(:goat) #=> 1
+queue.enqueue('queueing cues') #=> 2
+queue.dequeue #=> :goat
+queue.dequeue #=> 'queueing cues'
 ```
 
 ### How it works
 
-The stack is a very simple class similar to the linked list (above) but with fewer methods. Like the list, `Node` instances are used to store the stack's information. When initialized, the stack's `size` attribute is set to 0. When pushing a new value, a `Node` object is created and its `next_node` value is set to the current `head` (`nil` if there is none). Then the `head` is set to point at the new node. When popping a value, an error is raised if the stack is already empty; otherwise, the value at the current head is stored, the head is set to point at the next node in the stack, and the stored value is retured.
+The Queueue is very similar to the Stack except is a first-in/first-out structure. When instantiating a new Queueue, `size` is set to 0. After queueing an element, a Node object is created with the appropriate value and the `head` and `tail` attributes of the Queueue are set to point to this new node. With additional queueing, the `head` remains unchanged and the current `tail`'s `prev_node` attribute is set to point to the newly-added node, which also becomes the new `tail`. Dequeueing an element simply stores the value of the current `head` node, points the `head` to the previous node, and returns the stored value.

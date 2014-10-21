@@ -1,6 +1,6 @@
 require 'pry'
 require 'pry-nav'
-require 'node'
+require_relative './node'
 
 class Queueue
   attr_reader :size, :head, :tail
