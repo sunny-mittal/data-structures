@@ -18,7 +18,7 @@ describe 'My stack implementation' do
   end
 
   it 'should raise an error when trying to pop an empty stack' do
-    err = ->{ @stack.pop }.must_raise RuntimeError
+    err = -> { @stack.pop }.must_raise RuntimeError
     err.message.must_equal 'StackEmptyError'
   end
 end

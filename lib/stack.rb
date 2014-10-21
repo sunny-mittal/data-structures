@@ -24,7 +24,7 @@ class Stack
   end
 
   def pop
-    raise 'StackEmptyError' if @size == 0
+    fail 'StackEmptyError' if @size == 0
     value, @head = @head.value, @head.next_node
     @size -= 1
     value
