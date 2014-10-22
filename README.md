@@ -189,3 +189,40 @@ queue.dequeue #=> 'queueing cues'
 ### How it works
 
 The Queueue is very similar to the Stack except is a first-in/first-out structure. When instantiating a new Queueue, `size` is set to 0. After queueing an element, a Node object is created with the appropriate value and the `head` and `tail` attributes of the Queueue are set to point to this new node. With additional queueing, the `head` remains unchanged and the current `tail`'s `prev_node` attribute is set to point to the newly-added node, which also becomes the new `tail`. Dequeueing an element simply stores the value of the current `head` node, points the `head` to the previous node, and returns the stored value.
+
+## Hash Table
+
+**Hash Table** is my implementation of a hash table built using a single array and linked lists as array elements.
+
+### Installation
+
+Require in your *.rb file or use directly in IRB (make sure other dependencies are available):
+
+```ruby
+require 'hashtable.rb'
+```
+
+### Usage
+
+To construct an empty HashTable, use `HashTable.new(<number of buckets>)`. To add keys and values (keys must be strings), simply call `set(<key>, <value>)` on your HashTable instance. To find the value of a specific key, call `get(<key>)` on your HashTable instance. The following is an example using `/usr/share/dict/words` to add entries to the table where the key is a string and the value is the reverse of the string.
+
+```ruby
+my_table = begin
+                h = HashTable.new 1024
+                File.open('/usr/share/dict/words') do |file|
+                  file.each_line do |word|
+                    word.chomp!
+                    h.set(word, word.reverse)
+                  end
+                end
+                h
+              end
+my_table.get 'gherkin' #=> "nikrehg"
+str = 'definitely not already in there'
+my_table.set str, str.reverse #=> 106 (may differ on your system)
+my_table.get 'definitely not already in there' #=> "ereht ni ydaerla ton yletinifed"
+```
+
+### How it works
+
+The linked list used for creating the `HashTable` class (`HashList`) inherits from my previous implementation of `List` and overrides the `search` method so that it searches for a node by key and returns the value (or 'Key not found'). The `Node` class was also modified to now include a `key` attribute. When adding a new key-value pair to the hash table, a new `Node` is created using the key and value, the `hash` method is called on the key, which calculates the key's position in the base array by summing up the key's character's ordinal values multiplied by 10 to the power of that character's position in the string (that's a mouthful!) and mods that by the length of the hash table, a new `HashList` is created for the position (if necessary), and the node is added to the list. Getting the value of a specific key, by calling `get(<key>)` on the table, then just relies on the HashList's search method.

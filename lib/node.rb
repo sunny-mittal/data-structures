@@ -1,8 +1,9 @@
 class Node
-  attr_reader :value
+  attr_reader :key, :value
   attr_accessor :next_node, :prev_node
 
-  def initialize(value)
+  def initialize(key = nil, value)
     @value = value
+    @key = key
   end
 end
