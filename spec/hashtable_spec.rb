@@ -21,12 +21,12 @@ describe 'My hash table' do
 
   it 'should be of fixed size' do
     @hash_table.size.must_equal 1024
-    Proc.new { @hash_table.size = 1000 }.must_raise NoMethodError
+    proc { @hash_table.size = 1000 }.must_raise NoMethodError
     @hash_table.size.must_equal 1024
   end
 
   it 'should only accept strings as keys' do
-    Proc.new { @hash_table.set(42, 24) }.must_raise TypeError
+    proc { @hash_table.set(42, 24) }.must_raise TypeError
   end
 
   it 'should return the correct value' do
@@ -45,4 +45,3 @@ describe 'My hash table' do
     puts Benchmark.measure { 1000.times { @hash_table.get('whistling') } }
   end
 end
-
