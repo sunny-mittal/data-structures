@@ -40,20 +40,23 @@ class List
 
   def remove(node)
     return if (current_node = @head).nil? || node.nil?
+    return current_node.value if first_node current_node, node
+    until current_node.nil?
+      previous_node = current_node
+      return if (current_node = current_node.next_node).nil?
+      if current_node.value == node.value
+        previous_node.next_node, @size = current_node.next_node, @size - 1
+        return current_node.value
+      end
+    end
+  end
+
+  def first_node(current_node, node)
     if current_node.value == node.value
       @head = current_node.next_node
       @size -= 1
-      return current_node.value
-    else
-      until current_node.nil?
-        previous_node = current_node
-        return if (current_node = current_node.next_node).nil?
-        if current_node.value == node.value
-          previous_node.next_node = current_node.next_node
-          @size -= 1
-          return current_node.value
-        end
-      end
+      return true
     end
+    false
   end
 end
