@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/spec'
 require 'binary_tree'
+require 'benchmark'
 
 describe 'My binary tree' do
   before do
@@ -28,5 +29,15 @@ describe 'My binary tree' do
   it 'should implement post-order depth-first traversal' do
     @root.post_order.must_equal %w( Dan Peter Andrea Katie Jony Craig ) +
       %w( Eddie Phil Tim )
+  end
+
+  it 'is benchmarked' do
+    puts
+    puts 'Pre-order'
+    puts Benchmark.measure { 100.times { @root.pre_order } }
+    puts 'In-order'
+    puts Benchmark.measure { 100.times { @root.in_order } }
+    puts 'Post-order'
+    puts Benchmark.measure { 100.times { @root.post_order } }
   end
 end
