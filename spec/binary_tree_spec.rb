@@ -31,13 +31,22 @@ describe 'My binary tree' do
       %w( Eddie Phil Tim )
   end
 
-  it 'is benchmarked' do
+  it 'should reset the array on subsequent searches' do
+    @root.pre_order(true).must_equal %w( Tim Jony Dan Katie Peter Andrea ) +
+      %w( Phil Craig Eddie )
+    @root.in_order(true).must_equal %w( Dan Jony Peter Katie Andrea Tim ) +
+      %w( Craig Phil Eddie )
+    @root.post_order(true).must_equal %w( Dan Peter Andrea Katie Jony Craig ) +
+      %w( Eddie Phil Tim )
+  end
+
+  it 'should be benchmarked for performance' do
     puts
     puts 'Pre-order'
-    puts Benchmark.measure { 100.times { @root.pre_order } }
+    puts Benchmark.measure { 1000.times { @root.pre_order(true) } }
     puts 'In-order'
-    puts Benchmark.measure { 100.times { @root.in_order } }
+    puts Benchmark.measure { 1000.times { @root.in_order(true) } }
     puts 'Post-order'
-    puts Benchmark.measure { 100.times { @root.post_order } }
+    puts Benchmark.measure { 1000.times { @root.post_order(true) } }
   end
 end

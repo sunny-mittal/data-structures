@@ -15,7 +15,7 @@ This is my repository for maintaining the data structures and algorithms I const
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'insertion_sort.rb'
+require 'insertion_sort'
 ```
 
 ### Usage
@@ -41,7 +41,7 @@ I chose to open up the Array class and add the necessary instance method. I then
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'merge_sort.rb'
+require 'merge_sort'
 ```
 
 ### Usage
@@ -65,7 +65,7 @@ I chose to open up the Array class for this as well and add the necessary instan
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'quick_sort.rb'
+require 'quick_sort'
 ```
 
 ### Usage
@@ -89,7 +89,7 @@ Again I chose to open up the Array class and add the necessary instance method(s
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'radix_sort.rb'
+require 'radix_sort'
 ```
 
 ### Usage
@@ -114,7 +114,7 @@ For the last of my sorting algorithms, I again chose to open up the Array class.
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'linked_list.rb'
+require 'linked_list'
 ```
 
 ### Usage
@@ -144,7 +144,7 @@ The Linked List file includes two classes, one for a node and one for the list i
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'stack.rb'
+require 'stack'
 ```
 
 ### Usage
@@ -170,7 +170,7 @@ The stack is a very simple class similar to the linked list (above) but with few
 Require in your *.rb file (or use directly in IRB):
 
 ```ruby
-require 'queueue.rb'
+require 'queueue'
 ```
 
 ### Usage
@@ -199,7 +199,7 @@ The Queueue is very similar to the Stack except is a first-in/first-out structur
 Require in your *.rb file or use directly in IRB (make sure other dependencies are available):
 
 ```ruby
-require 'hashtable.rb'
+require 'hashtable'
 ```
 
 ### Usage
@@ -226,3 +226,39 @@ my_table.get 'definitely not already in there' #=> "ereht ni ydaerla ton yletini
 ### How it works
 
 The linked list used for creating the `HashTable` class (`HashList`) inherits from my previous implementation of `List` and overrides the `search` method so that it searches for a node by key and returns the value (or 'Key not found'). The `Node` class was also modified to now include a `key` attribute. When adding a new key-value pair to the hash table, a new `Node` is created using the key and value, the `hash` method is called on the key, which calculates the key's position in the base array by summing up the key's character's ordinal values multiplied by 10 to the power of that character's position in the string (that's a mouthful!) and mods that by the length of the hash table, a new `HashList` is created for the position (if necessary), and the node is added to the list. Getting the value of a specific key, by calling `get(<key>)` on the table, then just relies on the HashList's search method.
+
+## Binary Tree
+
+**Binary Tree** is my implementation of a binary tree in Ruby that implements the three depth-first search methods: pre-order, in-order, and post-order.
+
+### Installation
+
+Require in your *.rb file (or use directly in IRB)
+
+```ruby
+require 'binary_tree'
+```
+
+### Usage
+
+To construct a binary tree, use `BinaryTree.new(<value>, [<left>, <right>])` (`left` and `right` are optional parameters which default to `nil`, but should themselves be BinaryTree objects if set). To obtain a print out of a pre-order search, call `pre_order` on the BinaryTree root node; for an in-order search, call `in_order` on the BinaryTree root node; and for a post-order search, call `post_order` on the BinaryTree root node. In the following example, Tim overlooks Jony and Phil; Jony overlooks Dan and Katie; Phil overlooks Craig and Eddie; and Katie overlooks Peter and Andrea.
+
+```ruby
+peter = BinaryTree.new('Peter')
+andrea = BinaryTree.new('Andrea')
+dan = BinaryTree.new('Dan')
+craig = BinaryTree.new('Craig')
+eddie = BinaryTree.new('Eddie')
+katie = BinaryTree.new('Katie', peter, andrea)
+jony = BinaryTree.new('Jony', dan, katie)
+phil = BinaryTree.new('Phil', craig, eddie)
+root = BinaryTree.new('Tim', jony, phil)
+
+root.pre_order(true) #=> ["Tim", "Jony", "Dan", "Katie", "Peter", "Andrea", "Phil", "Craig", "Eddie"]
+root.in_order(true) #=> ["Dan", "Jony", "Peter", "Katie", "Andrea", "Tim", "Craig", "Phil", "Eddie"]
+root.post_order(true) #=> ["Dan", "Peter", "Andrea", "Katie", "Jony", "Craig", "Eddie", "Phil", "Tim"]
+```
+
+### How it works
+
+The binary tree is simple data structure that stores a node value and pointers to the left and/or right subtrees, if specified. The search methods are simple variations of each other: `pre_order` starts at a root node, traverses left, and then traverses right; `in_order` traverses left, visits the root, then traverses right; and `post_order` traverses left, traverses right, and then visits the root. The `true` parameter is necessary to ensure that the search results don't get concatenated to previous search results.
