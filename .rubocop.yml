@@ -11,3 +11,6 @@ AllCops:
     - vendor/**/*
     - db/**/*
     - bin/*
+
+Style/ClassVars:
+  Enabled: false
