@@ -24,9 +24,8 @@ class List
     node
   end
 
-  def to_s
+  def to_s(result = [])
     return '' if (node = @head).nil?
-    result = []
     until node.nil?
       result << case node.value
                 when Numeric then node.value
@@ -38,22 +37,30 @@ class List
     result.join(', ')
   end
 
-  def remove(node)
-    return if (current_node = @head).nil? || node.nil?
-    return current_node.value if first_node current_node, node
-    until current_node.nil?
-      previous_node = current_node
-      return if (current_node = current_node.next_node).nil?
-      if current_node.value == node.value
-        previous_node.next_node, @size = current_node.next_node, @size - 1
-        return current_node.value
-      end
+  def remove(node, current_node = @head)
+    if first_node_matches?(current_node, node)
+      return node.value
+    elsif next_node_matches?(node, current_node)
+      return node.value
+    else
+      remove(node, current_node.next_node)
     end
+  rescue NoMethodError => e
+    nil if e.to_s.match(/value/)
   end
 
-  def first_node(current_node, node)
+  def first_node_matches?(current_node, node)
     if current_node.value == node.value
       @head = current_node.next_node
+      @size -= 1
+      return true
+    end
+    false
+  end
+
+  def next_node_matches?(node, current_node)
+    if current_node.next_node.value == node.value
+      current_node.next_node = current_node.next_node.next_node
       @size -= 1
       return true
     end

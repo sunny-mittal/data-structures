@@ -39,5 +39,9 @@ describe 'Linked list' do
     @ll.size.must_equal previous_length - 1
     @ll.search('Lizard').must_equal nil
     @ll.remove(Node.new(42)).must_equal nil
+    giraffe_node = @ll.search(:giraffe)
+    @ll.remove(giraffe_node).must_equal :giraffe
+    @ll.search(:giraffe).must_equal nil
+    @ll.remove('something').must_equal nil
   end
 end
