@@ -30,14 +30,4 @@ describe 'My binary tree' do
     @root.post_order.must_equal %w( Dan Peter Andrea Katie Jony Craig ) +
       %w( Eddie Phil Tim )
   end
-
-  it 'is benchmarked' do
-    puts
-    puts 'Pre-order'
-    puts Benchmark.measure { 100.times { @root.pre_order } }
-    puts 'In-order'
-    puts Benchmark.measure { 100.times { @root.in_order } }
-    puts 'Post-order'
-    puts Benchmark.measure { 100.times { @root.post_order } }
-  end
 end
