@@ -254,11 +254,11 @@ jony = BinaryTree.new('Jony', dan, katie)
 phil = BinaryTree.new('Phil', craig, eddie)
 root = BinaryTree.new('Tim', jony, phil)
 
-root.pre_order(true) #=> ["Tim", "Jony", "Dan", "Katie", "Peter", "Andrea", "Phil", "Craig", "Eddie"]
-root.in_order(true) #=> ["Dan", "Jony", "Peter", "Katie", "Andrea", "Tim", "Craig", "Phil", "Eddie"]
-root.post_order(true) #=> ["Dan", "Peter", "Andrea", "Katie", "Jony", "Craig", "Eddie", "Phil", "Tim"]
+root.pre_order #=> ["Tim", "Jony", "Dan", "Katie", "Peter", "Andrea", "Phil", "Craig", "Eddie"]
+root.in_order #=> ["Dan", "Jony", "Peter", "Katie", "Andrea", "Tim", "Craig", "Phil", "Eddie"]
+root.post_order #=> ["Dan", "Peter", "Andrea", "Katie", "Jony", "Craig", "Eddie", "Phil", "Tim"]
 ```
 
 ### How it works
 
-The binary tree is simple data structure that stores a node value and pointers to the left and/or right subtrees, if specified. The search methods are simple variations of each other: `pre_order` starts at a root node, traverses left, and then traverses right; `in_order` traverses left, visits the root, then traverses right; and `post_order` traverses left, traverses right, and then visits the root. The `true` parameter is necessary to ensure that the search results don't get concatenated to previous search results.
+The binary tree is simple data structure that stores a node value and pointers to the left and/or right subtrees, if specified. The search methods are simple variations of each other: `pre_order` starts at a root node, traverses left, and then traverses right; `in_order` traverses left, visits the root, then traverses right; and `post_order` traverses left, traverses right, and then visits the root.

@@ -11,26 +11,26 @@ class BinaryTree
     @@search_results = []
   end
 
-  def pre_order(reset = false)
+  def pre_order(reset = true)
     @@search_results = [] if reset
     @@search_results << value
-    left.pre_order if left
-    right.pre_order if right
+    left.pre_order(false) if left
+    right.pre_order(false) if right
     @@search_results
   end
 
-  def in_order(reset = false)
+  def in_order(reset = true)
     @@search_results = [] if reset
-    left.in_order if left
+    left.in_order(false) if left
     @@search_results << value
-    right.in_order if right
+    right.in_order(false) if right
     @@search_results
   end
 
-  def post_order(reset = false)
+  def post_order(reset = true)
     @@search_results = [] if reset
-    left.post_order if left
-    right.post_order if right
+    left.post_order(false) if left
+    right.post_order(false) if right
     @@search_results << value
   end
 end
