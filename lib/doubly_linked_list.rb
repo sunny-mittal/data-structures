@@ -27,11 +27,6 @@ class DoublyLinkedList
     self
   end
 
-  def remove
-    @prev.next = @next
-    @next.prev = @prev if @next
-  end
-
   def to_s
     result = ''
     node = self
@@ -39,7 +34,13 @@ class DoublyLinkedList
       result << "#{node.value} <=> "
       node = node.next
     end
-    5.times { result.chop! }
-    result
+    result[0...-5]
+  end
+
+  private
+
+  def remove
+    @prev.next = @next
+    @next.prev = @prev if @next
   end
 end
