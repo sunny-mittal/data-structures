@@ -16,7 +16,8 @@ class DoublyLinkedList
 
   def insert(*values)
     values.each do |value|
-      @next.nil? ? (@next = DoublyLinkedList.new value).prev = self : @next.insert(value)
+      @next.nil? ? (@next = DoublyLinkedList.new value).prev = self :
+        @next.insert(value)
     end
   end
 
