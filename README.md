@@ -292,3 +292,7 @@ dll.size #=> 6
 ### How it works
 
 The doubly-linked list is a simple class with only a few methods. It is not designed to be used as a fully-functional linked list and was only made to demonstrate the `deduplicate` method. Upon instantiation of a list, the `value` instance variable is set to the value passed into the constructor. When counting the number of nodes, `size` is passed a default value of 1, because there must be at least 1 node if we have an object on which to call the method. We then recursively call `size` on the next node(s), incrementing the count by 1 each time. When there are no more `next` nodes, the count is returned. When inserting a new node, we move through the list recursively until we find the last node (which has a `next` value of `nil`), at which point we insert the new value and update the relevant `next` and `prev` values. When deduplicating the list, we again move through the list recursively, adding any unseen values to a hash and calling the private `remove` helper method when we arrive at a value we've seen before. The `remove` method simply relinks the list. Finally, the `to_s` method loops through each node (not recursively), adding the value of the current node to the growing string and appending `<=> ` after each one for aesthetics. The final `<=> ` is then chopped off and the string returned.
+
+## License
+
+MIT: [http://sunny.mit-license.org](http://sunny.mit-license.org)
