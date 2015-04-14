@@ -2,8 +2,6 @@
 
 By [Sunny Mittal](http://www.sunnymittal.com).
 
-This is my repository for maintaining the data structures and algorithms I construct for my course at Code Fellows, Seattle.
-
 ## Insertion Sort
 
 ### Description
